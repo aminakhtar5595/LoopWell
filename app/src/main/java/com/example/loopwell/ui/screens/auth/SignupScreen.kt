@@ -65,13 +65,13 @@ fun SignupScreen() {
             value = usernameText,
             onValueChange = {
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.Transparent,
-                textColor = Color.Gray,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                placeholderColor = Color.Gray
-            ),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = Color.Transparent,
+//                textColor = Color.Gray,
+//                focusedIndicatorColor = Color.Transparent,
+//                unfocusedIndicatorColor = Color.Transparent,
+//                placeholderColor = Color.Gray
+//            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
@@ -96,13 +96,13 @@ fun SignupScreen() {
             value = emailText,
             onValueChange = {
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.Transparent,
-                textColor = Color.Gray,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                placeholderColor = Color.Gray
-            ),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = Color.Transparent,
+//                textColor = Color.Gray,
+//                focusedIndicatorColor = Color.Transparent,
+//                unfocusedIndicatorColor = Color.Transparent,
+//                placeholderColor = Color.Gray
+//            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
@@ -127,13 +127,13 @@ fun SignupScreen() {
             value = passwordText,
             onValueChange = {
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.Transparent,
-                textColor = Color.Gray,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                placeholderColor = Color.Gray
-            ),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = Color.Transparent,
+//                textColor = Color.Gray,
+//                focusedIndicatorColor = Color.Transparent,
+//                unfocusedIndicatorColor = Color.Transparent,
+//                placeholderColor = Color.Gray
+//            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 30.dp)

@@ -68,13 +68,13 @@ fun LoginScreen() {
             value = emailText,
             onValueChange = {
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.Transparent,
-                textColor = Color.Gray,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                placeholderColor = Color.Gray
-            ),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = Color.Transparent,
+//                textColor = Color.Gray,
+//                focusedIndicatorColor = Color.Transparent,
+//                unfocusedIndicatorColor = Color.Transparent,
+//                placeholderColor = Color.Gray
+//            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
@@ -99,13 +99,13 @@ fun LoginScreen() {
             value = passwordText,
             onValueChange = {
             },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.Transparent,
-                textColor = Color.Gray,
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                placeholderColor = Color.Gray
-            ),
+//            colors = TextFieldDefaults.textFieldColors(
+//                containerColor = Color.Transparent,
+//                textColor = Color.Gray,
+//                focusedIndicatorColor = Color.Transparent,
+//                unfocusedIndicatorColor = Color.Transparent,
+//                placeholderColor = Color.Gray
+//            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 30.dp)
