@@ -106,6 +106,35 @@ fun SignupScreen() {
             placeholder = { Text("Enter your email") },
         )
 
+        Text(
+            text = "Password",
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
+            ),
+            modifier = Modifier.padding(bottom = 5.dp)
+        )
 
+        TextField(
+            textStyle = TextStyle(
+                fontSize = 16.sp,
+            ),
+            value = passwordText,
+            onValueChange = {
+            },
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.Transparent,
+                textColor = Color.Gray,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                placeholderColor = Color.Gray
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 15.dp)
+                .border(width = 1.5.dp, color = Color(0xFFE5E8EB)),
+            shape = RoundedCornerShape(10.dp),
+            placeholder = { Text("Enter your password") },
+        )
     }
 }
