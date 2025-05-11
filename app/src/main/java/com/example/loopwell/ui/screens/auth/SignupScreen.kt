@@ -5,13 +5,13 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -28,7 +28,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupScreen() {
     var usernameText by remember { mutableStateOf("") }
@@ -36,14 +35,13 @@ fun SignupScreen() {
     var passwordText by remember { mutableStateOf("") }
     Column (
         modifier = Modifier
-            .padding(20.dp)
+            .fillMaxSize()
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = "SIGN UP",
-            style = TextStyle(
-                textAlign = TextAlign.Center,
-                fontSize = 40.sp,
-            ),
+            style = MaterialTheme.typography.headlineLarge.copy(textAlign = TextAlign.Center),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 20.dp)
@@ -51,10 +49,7 @@ fun SignupScreen() {
 
         Text(
             text = "Username",
-            style = TextStyle(
-                textAlign = TextAlign.Center,
-                fontSize = 20.sp,
-            ),
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(bottom = 5.dp)
         )
 
@@ -65,13 +60,13 @@ fun SignupScreen() {
             value = usernameText,
             onValueChange = {
             },
-//            colors = TextFieldDefaults.textFieldColors(
-//                containerColor = Color.Transparent,
-//                textColor = Color.Gray,
-//                focusedIndicatorColor = Color.Transparent,
-//                unfocusedIndicatorColor = Color.Transparent,
-//                placeholderColor = Color.Gray
-//            ),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.Black
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
@@ -82,10 +77,7 @@ fun SignupScreen() {
 
         Text(
             text = "Email",
-            style = TextStyle(
-                textAlign = TextAlign.Center,
-                fontSize = 20.sp,
-            ),
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(bottom = 5.dp)
         )
 
@@ -96,13 +88,13 @@ fun SignupScreen() {
             value = emailText,
             onValueChange = {
             },
-//            colors = TextFieldDefaults.textFieldColors(
-//                containerColor = Color.Transparent,
-//                textColor = Color.Gray,
-//                focusedIndicatorColor = Color.Transparent,
-//                unfocusedIndicatorColor = Color.Transparent,
-//                placeholderColor = Color.Gray
-//            ),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.Black
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
@@ -113,10 +105,7 @@ fun SignupScreen() {
 
         Text(
             text = "Password",
-            style = TextStyle(
-                textAlign = TextAlign.Center,
-                fontSize = 20.sp,
-            ),
+            style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(bottom = 5.dp)
         )
 
@@ -127,13 +116,13 @@ fun SignupScreen() {
             value = passwordText,
             onValueChange = {
             },
-//            colors = TextFieldDefaults.textFieldColors(
-//                containerColor = Color.Transparent,
-//                textColor = Color.Gray,
-//                focusedIndicatorColor = Color.Transparent,
-//                unfocusedIndicatorColor = Color.Transparent,
-//                placeholderColor = Color.Gray
-//            ),
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.Black
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 30.dp)
