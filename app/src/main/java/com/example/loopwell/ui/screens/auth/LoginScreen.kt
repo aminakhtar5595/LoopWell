@@ -133,5 +133,16 @@ fun LoginScreen() {
                 )
             )
         }
+
+        Text(
+            text = "Forgot Password?",
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+        )
     }
 }
