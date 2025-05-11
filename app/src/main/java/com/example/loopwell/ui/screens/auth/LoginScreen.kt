@@ -4,7 +4,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,11 +16,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,7 +26,8 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen() {
-    var searchText by remember { mutableStateOf("") }
+    var emailText by remember { mutableStateOf("") }
+    var passwordText by remember { mutableStateOf("") }
 
     Column (
         modifier = Modifier
@@ -62,7 +60,7 @@ fun LoginScreen() {
             textStyle = TextStyle(
                 fontSize = 16.sp,
             ),
-            value = searchText,
+            value = emailText,
             onValueChange = {
             },
             colors = TextFieldDefaults.textFieldColors(
@@ -78,6 +76,37 @@ fun LoginScreen() {
                 .border(width = 1.5.dp, color = Color(0xFFE5E8EB)),
             shape = RoundedCornerShape(10.dp),
             placeholder = { Text("Enter your email") },
+        )
+
+        Text(
+            text = "Password",
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 20.sp,
+            ),
+            modifier = Modifier.padding(bottom = 5.dp)
+        )
+
+        TextField(
+            textStyle = TextStyle(
+                fontSize = 16.sp,
+            ),
+            value = passwordText,
+            onValueChange = {
+            },
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.Transparent,
+                textColor = Color.Gray,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                placeholderColor = Color.Gray
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 15.dp)
+                .border(width = 1.5.dp, color = Color(0xFFE5E8EB)),
+            shape = RoundedCornerShape(10.dp),
+            placeholder = { Text("Enter your password") },
         )
     }
 }
