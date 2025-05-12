@@ -47,11 +47,28 @@ fun StatisticsScreen() {
 
         Column (
             modifier = Modifier
+                .padding(bottom = 20.dp)
                 .border(width = 0.5.dp, color = Color.Black, shape = RoundedCornerShape(5))
                 .padding(10.dp)
         ) {
             Text(
                 text = "Completion Rate",
+                style = MaterialTheme.typography.titleLarge
+            )
+
+            Text(
+                text = "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.",
+                style = MaterialTheme.typography.titleSmall
+            )
+        }
+
+        Column (
+            modifier = Modifier
+                .border(width = 0.5.dp, color = Color.Black, shape = RoundedCornerShape(5))
+                .padding(10.dp)
+        ) {
+            Text(
+                text = "Longest Streak",
                 style = MaterialTheme.typography.titleLarge
             )
 
