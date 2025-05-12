@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -42,5 +43,14 @@ fun HomeScreen() {
                 modifier = Modifier.fillMaxWidth()
             )
         }
+
+        Text(
+            text = "Habit 1",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 10.dp)
+        )
+
+        Divider()
+
     }
 }
