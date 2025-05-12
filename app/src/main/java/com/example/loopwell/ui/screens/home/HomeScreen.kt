@@ -47,9 +47,43 @@ fun HomeScreen() {
         Text(
             text = "Habit 1",
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(bottom = 10.dp)
+            modifier = Modifier.padding(bottom = 15.dp)
         )
+        Divider()
 
+        Text(
+            text = "Habit 2",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 15.dp, top = 20.dp)
+        )
+        Divider()
+
+        Text(
+            text = "Habit 3",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 15.dp, top = 20.dp)
+        )
+        Divider()
+
+        Text(
+            text = "Habit 4",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 15.dp, top = 20.dp)
+        )
+        Divider()
+
+        Text(
+            text = "Habit 5",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 15.dp, top = 20.dp)
+        )
+        Divider()
+
+        Text(
+            text = "Habit 6",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 15.dp, top = 20.dp)
+        )
         Divider()
 
     }
