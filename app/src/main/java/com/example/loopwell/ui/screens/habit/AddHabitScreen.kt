@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun AddHabitScreen() {
     var titleText by remember { mutableStateOf("") }
+    var frequencyText by remember { mutableStateOf("") }
+
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -82,6 +84,35 @@ fun AddHabitScreen() {
                 .border(width = 1.5.dp, color = Color(0xFFE5E8EB)),
             shape = RoundedCornerShape(10.dp),
             placeholder = { Text("Enter your habit title") },
+        )
+
+        Text(
+            text = "Frequency",
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 5.dp)
+        )
+
+        TextField(
+            textStyle = TextStyle(
+                fontSize = 16.sp,
+            ),
+            value = frequencyText,
+            onValueChange = {
+                frequencyText = it
+            },
+            colors = TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                cursorColor = Color.Black
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 15.dp)
+                .border(width = 1.5.dp, color = Color(0xFFE5E8EB)),
+            shape = RoundedCornerShape(10.dp),
+            placeholder = { Text("Enter your frequency") },
         )
     }
 }
