@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.graphics.Color
-import com.example.loopwell.ui.screens.auth.SplashScreen
+import com.example.loopwell.ui.screens.auth.OnboardingScreenOne
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -15,10 +15,10 @@ class MainActivity : ComponentActivity() {
 
             // Set global status bar color here
             systemUiController.setSystemBarsColor(
-                color = Color(0xFF1D1D1D),
+                color = Color(0xFF121212),
                 darkIcons = false
             )
-            SplashScreen()
+            OnboardingScreenOne()
         }
     }
 }
