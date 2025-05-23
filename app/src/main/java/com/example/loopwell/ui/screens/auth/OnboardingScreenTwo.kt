@@ -1,4 +1,5 @@
 package com.example.loopwell.ui.screens.auth
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.loopwell.R
 
 @Composable
-fun OnboardingScreenOne() {
+fun OnboardingScreenTwo() {
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -30,17 +31,17 @@ fun OnboardingScreenOne() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Image(painter = painterResource(id = R.drawable.onboarding_icon_one),
+        Image(painter = painterResource(id = R.drawable.onboarding_icon_two),
             contentDescription = "Onboarding Icon", Modifier.size(220.dp))
 
         Text(
-            text = "Welcome to LoopWell",
+            text = "Build a Better Routine",
             style = MaterialTheme.typography.headlineSmall.copy(color = Color(0xFFa21752), fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(top = 30.dp, bottom = 10.dp)
         )
 
         Text(
-            text = "This app will help you to keep an organized routine as you build new habits!",
+            text = "To begin using LoopWell, start by recording the habits you want to track in your life along with your pending tasks.",
             style = MaterialTheme.typography.bodyLarge.copy(color = Color.White, textAlign = TextAlign.Center, fontSize = 18.sp),
         )
     }
