@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.graphics.Color
 import com.example.loopwell.ui.screens.auth.OnboardingScreenFive
+import com.example.loopwell.ui.screens.home.HomeScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFF121212),
                 darkIcons = false
             )
-            OnboardingScreenFive()
+            HomeScreen()
         }
     }
 }
