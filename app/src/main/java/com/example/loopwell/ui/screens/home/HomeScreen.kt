@@ -46,10 +46,11 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0xFF121212))
-            .padding(10.dp),
+            .padding(top = 20.dp, start = 10.dp, end = 10.dp),
     ) {
         Row (
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .padding(bottom = 20.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -86,8 +87,7 @@ fun HorizontalCalendar(
 ) {
     LazyRow(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(days) { day ->
@@ -95,14 +95,19 @@ fun HorizontalCalendar(
 
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(if (isSelected) Color(0xFF6200EE) else Color.LightGray)
                     .clickable { onDateSelected(day) }
-                    .padding(12.dp)
+                    .padding(end = 20.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = day.dayOfWeek.name.take(3), color = Color.White)
-                    Text(text = day.dayOfMonth.toString(), color = Color.White)
+                    Text(text = day.dayOfWeek.name.take(3), style = MaterialTheme.typography.bodyMedium.copy(color = Color.White), modifier = Modifier.padding(bottom = 20.dp))
+
+                    Text(text = day.dayOfMonth.toString(),
+                        style = MaterialTheme.typography.titleLarge.copy(color = Color.White, fontWeight = FontWeight.Bold),
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(30.dp))
+                            .background(if (isSelected) Color(0xFF6200EE) else Color.Transparent)
+                            .padding(vertical = 5.dp, horizontal = 10.dp)
+                        )
                 }
             }
         }
