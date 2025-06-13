@@ -46,7 +46,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0xFF121212))
-            .padding(top = 20.dp, start = 10.dp, end = 10.dp),
+            .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
         Row (
             modifier = Modifier.fillMaxWidth()
@@ -56,18 +56,13 @@ fun HomeScreen() {
         ) {
             Column {
                 Text(
-                    text = "TODAY",
+                    text = "Today",
                     style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
-                )
-
-                Text(
-                    text = "Jun 9",
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.Gray),
                 )
             }
 
             Image(painter = painterResource(id = R.drawable.add_icon),
-                contentDescription = "Onboarding Icon", Modifier.size(40.dp))
+                contentDescription = "Onboarding Icon", Modifier.size(35.dp))
         }
 
         HorizontalCalendar(
