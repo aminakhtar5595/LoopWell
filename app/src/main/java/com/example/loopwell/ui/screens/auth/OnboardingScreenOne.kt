@@ -3,6 +3,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,8 +26,7 @@ fun OnboardingScreenOne() {
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0xFF121212))
-            .padding(horizontal = 10.dp)
-        ,
+            .padding(horizontal = 10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -42,6 +42,29 @@ fun OnboardingScreenOne() {
         Text(
             text = "This app will help you to keep an organized routine as you build new habits!",
             style = MaterialTheme.typography.bodyLarge.copy(color = Color.White, textAlign = TextAlign.Center, fontSize = 18.sp),
+        )
+    }
+
+    Row (
+        modifier = Modifier
+            .padding(horizontal = 60.dp, vertical = 10.dp)
+            .fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Text(
+            text = "Skip",
+            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+        )
+
+        Text(
+            text = "oooo",
+            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+        )
+
+        Text(
+            text = "Next",
+            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
         )
     }
 }
