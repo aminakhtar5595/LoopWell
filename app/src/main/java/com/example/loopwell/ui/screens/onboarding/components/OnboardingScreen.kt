@@ -1,6 +1,8 @@
-package com.example.loopwell.ui.screens.auth
+package com.example.loopwell.ui.screens.onboarding.components
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,10 +21,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.loopwell.R
 
 @Composable
-fun OnboardingScreenOne() {
+fun OnboardingScreen(
+    imageRes: Int,
+    title: String,
+    description: String,
+    currentPage: Int,
+    totalPages: Int,
+    onNextClick: () -> Unit,
+    onSkipClick: () -> Unit,
+    leftLabel: String,
+    rightLabel: String
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,13 +47,13 @@ fun OnboardingScreenOne() {
             modifier = Modifier.padding(top = 60.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.onboarding_icon_one),
-                contentDescription = "Onboarding Icon",
+                painter = painterResource(id = imageRes),
+                contentDescription = "Onboarding Image",
                 modifier = Modifier.size(220.dp)
             )
 
             Text(
-                text = "Welcome to LoopWell",
+                text = title,
                 style = MaterialTheme.typography.headlineSmall.copy(
                     color = Color(0xFFa21752),
                     fontWeight = FontWeight.Bold
@@ -51,7 +62,7 @@ fun OnboardingScreenOne() {
             )
 
             Text(
-                text = "This app will help you to keep an organized routine as you build new habits!",
+                text = description,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     color = Color.White,
                     textAlign = TextAlign.Center,
@@ -69,18 +80,16 @@ fun OnboardingScreenOne() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Skip",
+                text = leftLabel,
                 style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+                modifier = Modifier.clickable { onSkipClick() }
             )
+            PageIndicator(currentPage = currentPage, totalPages = totalPages)
 
             Text(
-                text = "○ ○ ○ ○",
-                style = MaterialTheme.typography.titleMedium.copy(color = Color(0xFFa21752)),
-            )
-
-            Text(
-                text = "Next",
+                text = rightLabel,
                 style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+                modifier = Modifier.clickable { onNextClick() }
             )
         }
     }
