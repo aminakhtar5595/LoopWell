@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -22,49 +23,65 @@ import com.example.loopwell.R
 
 @Composable
 fun OnboardingScreenOne() {
-    Column (
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0xFF121212))
             .padding(horizontal = 10.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(painter = painterResource(id = R.drawable.onboarding_icon_one),
-            contentDescription = "Onboarding Icon", Modifier.size(220.dp))
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(top = 60.dp)
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.onboarding_icon_one),
+                contentDescription = "Onboarding Icon",
+                modifier = Modifier.size(220.dp)
+            )
 
-        Text(
-            text = "Welcome to LoopWell",
-            style = MaterialTheme.typography.headlineSmall.copy(color = Color(0xFFa21752), fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(top = 30.dp, bottom = 10.dp)
-        )
+            Text(
+                text = "Welcome to LoopWell",
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    color = Color(0xFFa21752),
+                    fontWeight = FontWeight.Bold
+                ),
+                modifier = Modifier.padding(top = 30.dp, bottom = 10.dp)
+            )
 
-        Text(
-            text = "This app will help you to keep an organized routine as you build new habits!",
-            style = MaterialTheme.typography.bodyLarge.copy(color = Color.White, textAlign = TextAlign.Center, fontSize = 18.sp),
-        )
-    }
+            Text(
+                text = "This app will help you to keep an organized routine as you build new habits!",
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    fontSize = 18.sp
+                ),
+                modifier = Modifier.padding(horizontal = 20.dp)
+            )
+        }
 
-    Row (
-        modifier = Modifier
-            .padding(horizontal = 60.dp, vertical = 10.dp)
-            .fillMaxSize(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Bottom
-    ) {
-        Text(
-            text = "Skip",
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 40.dp, vertical = 20.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Skip",
+                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+            )
 
-        Text(
-            text = "oooo",
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-        )
+            Text(
+                text = "○ ○ ○ ○",
+                style = MaterialTheme.typography.titleMedium.copy(color = Color(0xFFa21752)),
+            )
 
-        Text(
-            text = "Next",
-            style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-        )
+            Text(
+                text = "Next",
+                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
+            )
+        }
     }
 }
