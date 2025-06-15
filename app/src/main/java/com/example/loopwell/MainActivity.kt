@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.graphics.Color
+import com.example.loopwell.ui.screens.home.HomeScreen
 import com.example.loopwell.ui.screens.onboarding.OnboardingScreenOne
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFF121212),
                 darkIcons = false
             )
-            OnboardingScreenOne()
+            HomeScreen()
         }
     }
 }
