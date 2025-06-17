@@ -8,7 +8,7 @@ import com.example.loopwell.R
 import com.example.loopwell.ui.screens.onboarding.components.OnboardingScreen
 
 @Composable
-fun OnboardingScreenOne() {
+fun OnboardingFlow() {
     var currentPage by remember { mutableStateOf(0) }
 
     val onboardingItems = listOf(

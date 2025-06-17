@@ -30,7 +30,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.loopwell.R
 import java.time.LocalDate
 
@@ -38,7 +40,7 @@ import java.time.LocalDate
 @Composable
 fun HomeScreen() {
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-
+    var nodata = true
     val today = remember { LocalDate.now() }
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
@@ -70,6 +72,10 @@ fun HomeScreen() {
             selectedDate = selectedDate,
             onDateSelected = { selectedDate = it }
         )
+
+        if (nodata) {
+            NoDataView()
+        }
     }
 }
 
@@ -122,5 +128,39 @@ fun HorizontalCalendar(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun NoDataView() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.onboarding_icon_two),
+            contentDescription = "No data image",
+            modifier = Modifier.size(140.dp)
+        )
+
+        Text(
+            text = "There is nothing scheduled",
+            style = MaterialTheme.typography.titleLarge.copy(
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            ),
+            modifier = Modifier.padding(top = 30.dp, bottom = 10.dp)
+        )
+
+        Text(
+            text = "Try adding new activities",
+            style = MaterialTheme.typography.bodyLarge.copy(
+                color = Color(0xFFa2a2a2),
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp
+            ),
+            modifier = Modifier.padding(horizontal = 20.dp)
+        )
     }
 }
