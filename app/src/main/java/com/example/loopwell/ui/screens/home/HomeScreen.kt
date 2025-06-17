@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -40,7 +41,7 @@ import java.time.LocalDate
 @Composable
 fun HomeScreen() {
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-    var nodata = true
+    var noData by remember { mutableStateOf(true) }
     val today = remember { LocalDate.now() }
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
@@ -58,13 +59,30 @@ fun HomeScreen() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "Today",
-                style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
-            )
+            Row {
+                Image(painter = painterResource(id = R.drawable.menu_icon),
+                    contentDescription = "Add habit icon",
+                    Modifier
+                        .padding(end = 20.dp)
+                        .size(33.dp))
 
-            Image(painter = painterResource(id = R.drawable.add_icon),
-                contentDescription = "Add habit icon", Modifier.size(35.dp))
+                Text(
+                    text = "Today",
+                    style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
+                )
+            }
+
+            Row {
+                Image(painter = painterResource(id = R.drawable.info_icon),
+                    contentDescription = "Add habit icon",
+                    Modifier
+                        .padding(end = 20.dp)
+                        .size(30.dp))
+
+                Image(painter = painterResource(id = R.drawable.add_icon),
+                    contentDescription = "Add habit icon", Modifier.size(30.dp))
+            }
+
         }
 
         HorizontalCalendar(
@@ -73,9 +91,16 @@ fun HomeScreen() {
             onDateSelected = { selectedDate = it }
         )
 
-        if (nodata) {
-            NoDataView()
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            if (noData) {
+                NoDataView()
+            }
         }
+
     }
 }
 
@@ -134,9 +159,9 @@ fun HorizontalCalendar(
 @Composable
 fun NoDataView() {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
     ) {
         Image(
             painter = painterResource(id = R.drawable.onboarding_icon_two),
