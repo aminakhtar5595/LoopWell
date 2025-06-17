@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.graphics.Color
 import com.example.loopwell.ui.screens.home.HomeScreen
-import com.example.loopwell.ui.screens.onboarding.OnboardingScreenOne
+import com.example.loopwell.ui.screens.onboarding.OnboardingFlow
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {

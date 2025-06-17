@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,7 +31,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.loopwell.R
 import java.time.LocalDate
 
@@ -38,7 +41,7 @@ import java.time.LocalDate
 @Composable
 fun HomeScreen() {
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-
+    var noData by remember { mutableStateOf(true) }
     val today = remember { LocalDate.now() }
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
@@ -56,13 +59,30 @@ fun HomeScreen() {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "Today",
-                style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
-            )
+            Row {
+                Image(painter = painterResource(id = R.drawable.menu_icon),
+                    contentDescription = "Add habit icon",
+                    Modifier
+                        .padding(end = 20.dp)
+                        .size(33.dp))
 
-            Image(painter = painterResource(id = R.drawable.add_icon),
-                contentDescription = "Add habit icon", Modifier.size(35.dp))
+                Text(
+                    text = "Today",
+                    style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
+                )
+            }
+
+            Row {
+                Image(painter = painterResource(id = R.drawable.info_icon),
+                    contentDescription = "Add habit icon",
+                    Modifier
+                        .padding(end = 20.dp)
+                        .size(30.dp))
+
+                Image(painter = painterResource(id = R.drawable.add_icon),
+                    contentDescription = "Add habit icon", Modifier.size(30.dp))
+            }
+
         }
 
         HorizontalCalendar(
@@ -70,6 +90,17 @@ fun HomeScreen() {
             selectedDate = selectedDate,
             onDateSelected = { selectedDate = it }
         )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Center
+        ) {
+            if (noData) {
+                NoDataView()
+            }
+        }
+
     }
 }
 
@@ -122,5 +153,39 @@ fun HorizontalCalendar(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun NoDataView() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.onboarding_icon_two),
+            contentDescription = "No data image",
+            modifier = Modifier.size(140.dp)
+        )
+
+        Text(
+            text = "There is nothing scheduled",
+            style = MaterialTheme.typography.titleLarge.copy(
+                color = Color.White,
+                fontWeight = FontWeight.Bold
+            ),
+            modifier = Modifier.padding(top = 30.dp, bottom = 10.dp)
+        )
+
+        Text(
+            text = "Try adding new activities",
+            style = MaterialTheme.typography.bodyLarge.copy(
+                color = Color(0xFFa2a2a2),
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp
+            ),
+            modifier = Modifier.padding(horizontal = 20.dp)
+        )
     }
 }
