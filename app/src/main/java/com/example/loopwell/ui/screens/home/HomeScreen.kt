@@ -17,6 +17,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.DateRange
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,10 +67,10 @@ fun HomeScreen(navController: NavController) {
         ) {
             Row {
                 Image(painter = painterResource(id = R.drawable.menu_icon),
-                    contentDescription = "Add habit icon",
+                    contentDescription = "Menu icon",
                     Modifier
                         .padding(end = 20.dp)
-                        .size(33.dp))
+                        .size(25.dp))
 
                 Text(
                     text = "Today",
@@ -75,14 +79,21 @@ fun HomeScreen(navController: NavController) {
             }
 
             Row {
+                Icon(
+                    imageVector = Icons.Outlined.Search,
+                    contentDescription = "Search Icon",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.Gray
+                )
+                Icon(
+                    imageVector = Icons.Outlined.DateRange,
+                    contentDescription = "Search Icon",
+                    modifier = Modifier.padding(horizontal = 20.dp).size(24.dp),
+                    tint = Color.Gray
+                )
                 Image(painter = painterResource(id = R.drawable.info_icon),
-                    contentDescription = "Add habit icon",
-                    Modifier
-                        .padding(end = 20.dp)
-                        .size(30.dp))
-
-                Image(painter = painterResource(id = R.drawable.add_icon),
-                    contentDescription = "Add habit icon", Modifier.size(30.dp))
+                    contentDescription = "Info",
+                    Modifier.size(24.dp))
             }
 
         }
