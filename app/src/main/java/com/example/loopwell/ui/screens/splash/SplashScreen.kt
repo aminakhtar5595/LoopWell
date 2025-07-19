@@ -1,4 +1,4 @@
-package com.example.loopwell.ui.screens.auth
+package com.example.loopwell.ui.screens.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
