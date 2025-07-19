@@ -4,11 +4,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
 import com.example.loopwell.R
-import com.example.loopwell.ui.screens.onboarding.components.OnboardingScreen
+import com.example.loopwell.ui.components.OnboardingScreen
 
 @Composable
-fun OnboardingFlow() {
+fun OnboardingFlow(navController: NavController) {
     var currentPage by remember { mutableStateOf(0) }
 
     val onboardingItems = listOf(
@@ -34,18 +35,18 @@ fun OnboardingFlow() {
 
         onSkipClick = {
             if (isFirstPage) {
-//                navController.navigate("home") {
-//                    popUpTo("onboarding") { inclusive = true }
-//                }
+                navController.navigate("home") {
+                    popUpTo("onboarding") { inclusive = true }
+                }
             } else {
                 currentPage--
             }
         },
         onNextClick = {
             if (isLastPage) {
-//                navController.navigate("home") {
-//                    popUpTo("onboarding") { inclusive = true }
-//                }
+                navController.navigate("home") {
+                    popUpTo("onboarding") { inclusive = true }
+                }
             } else {
                 currentPage++
             }

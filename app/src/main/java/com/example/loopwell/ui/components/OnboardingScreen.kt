@@ -1,4 +1,4 @@
-package com.example.loopwell.ui.screens.onboarding.components
+package com.example.loopwell.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
