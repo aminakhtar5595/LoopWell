@@ -35,6 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loopwell.R
+import com.example.loopwell.ui.theme.BackgroundColor
+import com.example.loopwell.ui.theme.DarkGray
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -49,7 +51,7 @@ fun HomeScreen(navController: NavController) {
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xFF121212))
+            .background(color = BackgroundColor)
             .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
         Row (
@@ -120,7 +122,7 @@ fun HorizontalCalendar(
                     .clickable { onDateSelected(day) }
                     .padding(end = 8.dp)
                     .clip(RoundedCornerShape(20.dp))
-                    .background(if (isSelected) Color(0xFFc03755) else Color(0xFF1c1c1c)),
+                    .background(if (isSelected) Color(0xFFc03755) else DarkGray),
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = day.dayOfWeek.name.take(3),
