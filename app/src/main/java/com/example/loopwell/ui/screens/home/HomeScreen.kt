@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loopwell.R
+import com.example.loopwell.ui.components.FloatingButton
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.DarkGray
 import java.time.LocalDate
@@ -52,10 +53,13 @@ fun HomeScreen(navController: NavController) {
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
 
-    Column (
+    Box (
         modifier = Modifier
             .fillMaxSize()
             .background(color = BackgroundColor)
+    ) {
+    Column (
+        modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
         Row (
@@ -88,7 +92,9 @@ fun HomeScreen(navController: NavController) {
                 Icon(
                     imageVector = Icons.Outlined.DateRange,
                     contentDescription = "Search Icon",
-                    modifier = Modifier.padding(horizontal = 20.dp).size(24.dp),
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .size(24.dp),
                     tint = Color.Gray
                 )
                 Image(painter = painterResource(id = R.drawable.info_icon),
@@ -113,7 +119,16 @@ fun HomeScreen(navController: NavController) {
                 NoDataView()
             }
         }
-
+    }
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(20.dp)
+        ) {
+            FloatingButton(onClick = {
+                navController.navigate("expense")
+            })
+        }
     }
 }
 
