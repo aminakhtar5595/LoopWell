@@ -59,8 +59,8 @@ fun HomeScreen(navController: NavController) {
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
     val taskList = listOf(
         HabitTask("Attend Wedding", "Task", R.drawable.social_icon),
-        HabitTask("Buy Groceries", "Personal", R.drawable.social_icon),
-        HabitTask("Learn kotlin", "Fitness", R.drawable.social_icon)
+        HabitTask("Buy Groceries", "Task", R.drawable.home_icon),
+        HabitTask("Learn kotlin", "Habit", R.drawable.study_icon)
     )
 
     Box (
