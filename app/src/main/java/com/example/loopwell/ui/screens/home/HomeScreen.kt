@@ -3,7 +3,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,15 +14,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loopwell.R
 import com.example.loopwell.ui.components.FloatingButton
+import com.example.loopwell.ui.model.HabitTask
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.DarkGray
 import com.example.loopwell.ui.theme.Red
@@ -58,6 +57,11 @@ fun HomeScreen(navController: NavController) {
     val today = remember { LocalDate.now() }
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
+    val taskList = listOf(
+        HabitTask("Attend Wedding", "Task", R.drawable.social_icon),
+        HabitTask("Buy Groceries", "Personal", R.drawable.social_icon),
+        HabitTask("Learn kotlin", "Fitness", R.drawable.social_icon)
+    )
 
     Box (
         modifier = Modifier
@@ -116,53 +120,19 @@ fun HomeScreen(navController: NavController) {
             onDateSelected = { selectedDate = it }
         )
 
-        Row (
-            modifier = Modifier.fillMaxWidth().padding(vertical = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Row {
-                Icon(
-                    imageVector = Icons.Outlined.Search,
-                    contentDescription = "Search Icon",
-                    modifier = Modifier.size(35.dp),
-                    tint = Color.Red
-                )
-
-                Column (
-                    modifier = Modifier.padding(start = 10.dp)
-                ) {
-                    Text(
-                        text = "Attend Wedding",
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            color = Color.White,
-                            fontSize = 18.sp
-                        )
-                    )
-
-                    Text(
-                        text = "Task",
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            color = Red
-                        ), modifier = Modifier.background(color = Color.Red.copy(alpha = 0.2f), shape = RoundedCornerShape(5.dp)).padding(3.dp)
-                    )
-                }
+        LazyColumn {
+            items(taskList) { task ->
+                HabitTaskItem(task = task)
             }
-
-            Icon(
-                imageVector = Icons.Outlined.Check,
-                contentDescription = "Search Icon",
-                modifier = Modifier.size(35.dp),
-                tint = Color.Red
-            )
         }
-        HorizontalDivider(thickness = 1.dp, color = DarkGray)
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center
-        ) {
-            if (noData) {
+
+        if (noData) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 NoDataView()
             }
         }
@@ -263,4 +233,53 @@ fun NoDataView() {
             modifier = Modifier.padding(horizontal = 20.dp)
         )
     }
+}
+
+@Composable
+fun HabitTaskItem(task: HabitTask) {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row {
+            Image(painter = painterResource(id = task.iconRes),
+                contentDescription = "Social Icon",
+                Modifier.size(45.dp))
+
+            Column (
+                modifier = Modifier.padding(start = 15.dp)
+            ) {
+                Text(
+                    text = task.name,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        color = Color.White,
+                        fontSize = 18.sp
+                    )
+                )
+
+                Text(
+                    text = task.type,
+                    style = MaterialTheme.typography.titleSmall.copy(
+                        color = Red
+                    ), modifier = Modifier
+                        .background(
+                            color = Color.Red.copy(alpha = 0.2f),
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .padding(3.dp)
+                )
+            }
+        }
+
+        Icon(
+            imageVector = Icons.Outlined.CheckCircle,
+            contentDescription = "Search Icon",
+            modifier = Modifier.size(30.dp),
+            tint = Color.Gray
+        )
+    }
+    HorizontalDivider(thickness = 1.dp, color = DarkGray)
 }
