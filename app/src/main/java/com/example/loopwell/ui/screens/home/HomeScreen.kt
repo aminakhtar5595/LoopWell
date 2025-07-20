@@ -14,9 +14,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.CheckCircle
+import androidx.compose.material.icons.outlined.DateRange
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,23 +42,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loopwell.R
+import com.example.loopwell.ui.components.FloatingButton
+import com.example.loopwell.ui.model.HabitTask
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.DarkGray
+import com.example.loopwell.ui.theme.Red
 import java.time.LocalDate
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(navController: NavController) {
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-    var noData by remember { mutableStateOf(true) }
+    var noData by remember { mutableStateOf(false) }
     val today = remember { LocalDate.now() }
     val startDate = today.minusDays(2)
     val days = (0..14).map { startDate.plusDays(it.toLong()) }
+    val taskList = listOf(
+        HabitTask("Attend Wedding", "Task", R.drawable.social_icon),
+        HabitTask("Buy Groceries", "Task", R.drawable.home_icon),
+        HabitTask("Learn kotlin", "Habit", R.drawable.study_icon)
+    )
 
-    Column (
+    Box (
         modifier = Modifier
             .fillMaxSize()
             .background(color = BackgroundColor)
+    ) {
+    Column (
+        modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
         Row (
@@ -63,10 +81,10 @@ fun HomeScreen(navController: NavController) {
         ) {
             Row {
                 Image(painter = painterResource(id = R.drawable.menu_icon),
-                    contentDescription = "Add habit icon",
+                    contentDescription = "Menu icon",
                     Modifier
                         .padding(end = 20.dp)
-                        .size(33.dp))
+                        .size(25.dp))
 
                 Text(
                     text = "Today",
@@ -75,14 +93,23 @@ fun HomeScreen(navController: NavController) {
             }
 
             Row {
+                Icon(
+                    imageVector = Icons.Outlined.Search,
+                    contentDescription = "Search Icon",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.Gray
+                )
+                Icon(
+                    imageVector = Icons.Outlined.DateRange,
+                    contentDescription = "Search Icon",
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .size(24.dp),
+                    tint = Color.Gray
+                )
                 Image(painter = painterResource(id = R.drawable.info_icon),
-                    contentDescription = "Add habit icon",
-                    Modifier
-                        .padding(end = 20.dp)
-                        .size(30.dp))
-
-                Image(painter = painterResource(id = R.drawable.add_icon),
-                    contentDescription = "Add habit icon", Modifier.size(30.dp))
+                    contentDescription = "Info",
+                    Modifier.size(24.dp))
             }
 
         }
@@ -93,16 +120,32 @@ fun HomeScreen(navController: NavController) {
             onDateSelected = { selectedDate = it }
         )
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center
-        ) {
-            if (noData) {
-                NoDataView()
+        LazyColumn {
+            items(taskList) { task ->
+                HabitTaskItem(task = task)
             }
         }
 
+
+        if (noData) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                NoDataView()
+            }
+        }
+    }
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .padding(20.dp)
+        ) {
+            FloatingButton(onClick = {
+                navController.navigate("expense")
+            })
+        }
     }
 }
 
@@ -190,4 +233,53 @@ fun NoDataView() {
             modifier = Modifier.padding(horizontal = 20.dp)
         )
     }
+}
+
+@Composable
+fun HabitTaskItem(task: HabitTask) {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row {
+            Image(painter = painterResource(id = task.iconRes),
+                contentDescription = "Social Icon",
+                Modifier.size(45.dp))
+
+            Column (
+                modifier = Modifier.padding(start = 15.dp)
+            ) {
+                Text(
+                    text = task.name,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        color = Color.White,
+                        fontSize = 18.sp
+                    )
+                )
+
+                Text(
+                    text = task.type,
+                    style = MaterialTheme.typography.titleSmall.copy(
+                        color = Red
+                    ), modifier = Modifier
+                        .background(
+                            color = Color.Red.copy(alpha = 0.2f),
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .padding(3.dp)
+                )
+            }
+        }
+
+        Icon(
+            imageVector = Icons.Outlined.CheckCircle,
+            contentDescription = "Search Icon",
+            modifier = Modifier.size(30.dp),
+            tint = Color.Gray
+        )
+    }
+    HorizontalDivider(thickness = 1.dp, color = DarkGray)
 }
