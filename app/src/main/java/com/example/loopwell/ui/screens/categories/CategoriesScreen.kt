@@ -33,47 +33,73 @@ fun CategoriesScreen() {
             .fillMaxSize()
             .background(color = BackgroundColor)
     ) {
-        Row (
-            Modifier.fillMaxWidth().padding(vertical = 20.dp, horizontal = 5.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Row (
-                verticalAlignment = Alignment.Bottom
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.KeyboardArrowLeft,
-                    contentDescription = "Back arrow icon",
-                    modifier = Modifier.size(30.dp),
-                    tint = Red
-                )
-
-                Text(
-                    text = "Categories",
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
-                    ), modifier = Modifier.padding(start = 10.dp)
-                )
-            }
-
-            Row (
-                horizontalArrangement = Arrangement.spacedBy(25.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.DateRange,
-                    contentDescription = "Date Icon",
-                    modifier = Modifier.size(25.dp),
-                    tint = Color.Gray
-                )
-
-                Icon(
-                    imageVector = Icons.Outlined.Info,
-                    contentDescription = "iNFO Icon",
-                    modifier = Modifier.size(25.dp),
-                    tint = Color.Gray
-                )
-            }
-        }
+        headerView()
         HorizontalDivider(thickness = 1.dp, color = DarkGray)
+
+        Column (
+            Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
+        ) {
+            Text(
+                text = "Default categories",
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    color = Color.White,
+                )
+            )
+
+            Text(
+                text = "Editable for premium users",
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Color.Gray,
+                )
+            )
+        }
+
+    }
+}
+
+@Composable
+fun headerView () {
+    Row (
+        Modifier
+            .fillMaxWidth()
+            .padding(vertical = 20.dp, horizontal = 5.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row (
+            verticalAlignment = Alignment.Bottom
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.KeyboardArrowLeft,
+                contentDescription = "Back arrow icon",
+                modifier = Modifier.size(30.dp),
+                tint = Red
+            )
+
+            Text(
+                text = "Categories",
+                style = MaterialTheme.typography.titleLarge.copy(
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                ), modifier = Modifier.padding(start = 10.dp)
+            )
+        }
+
+        Row (
+            horizontalArrangement = Arrangement.spacedBy(25.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.DateRange,
+                contentDescription = "Date Icon",
+                modifier = Modifier.size(25.dp),
+                tint = Color.Gray
+            )
+
+            Icon(
+                imageVector = Icons.Outlined.Info,
+                contentDescription = "iNFO Icon",
+                modifier = Modifier.size(25.dp),
+                tint = Color.Gray
+            )
+        }
     }
 }
