@@ -3,7 +3,9 @@ package com.example.loopwell.ui.screens.categories
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,10 +15,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.KeyboardArrowLeft
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.loopwell.R
 import com.example.loopwell.ui.model.Category
 import com.example.loopwell.ui.theme.BackgroundColor
@@ -53,35 +59,53 @@ fun CategoriesScreen() {
         Category("Outdoor", R.drawable.outdoor_icon, "0 entries"),
         Category("Other", R.drawable.other_icon, "0 entries")
     )
-    Column (
+
+    Box (
         modifier = Modifier
             .fillMaxSize()
             .background(color = BackgroundColor)
-    ) {
-        HeaderView()
-        HorizontalDivider(thickness = 1.dp, color = DarkGray)
-
+    )  {
         Column (
-            Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
+            modifier = Modifier
+                .fillMaxSize()
         ) {
-            Text(
-                text = "Default categories",
-                style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
-            )
+            HeaderView()
+            HorizontalDivider(thickness = 1.dp, color = DarkGray)
 
-            Text(
-                text = "Editable for premium users",
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
-            )
-            Spacer(modifier = Modifier.height(20.dp))
+            Column (
+                Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
+            ) {
+                Text(
+                    text = "Default categories",
+                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
+                )
 
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-                items(categories) { category ->
-                    CategoryItem(category)
+                Text(
+                    text = "Editable for premium users",
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                    items(categories) { category ->
+                        CategoryItem(category)
+                    }
                 }
             }
         }
+        Button(
+            onClick = {  },
+            shape = RoundedCornerShape(10.dp),
+            modifier = Modifier.fillMaxWidth().align(Alignment.BottomCenter).padding(20.dp),
+            contentPadding = PaddingValues(vertical = 18.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Red),
+        ) {
+            Text("NEW CATEGORY",
+                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontSize = 18.sp)
+            )
+        }
     }
+
 }
 
 @Composable
