@@ -88,7 +88,7 @@ fun HomeScreen(navController: NavController) {
 
                 Text(
                     text = "Today",
-                    style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold),
+                    style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold)
                 )
             }
 
