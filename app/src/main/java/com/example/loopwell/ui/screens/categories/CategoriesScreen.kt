@@ -2,6 +2,7 @@ package com.example.loopwell.ui.screens.categories
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.KeyboardArrowLeft
+import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -34,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.loopwell.R
 import com.example.loopwell.ui.model.Category
 import com.example.loopwell.ui.theme.BackgroundColor
@@ -41,7 +44,7 @@ import com.example.loopwell.ui.theme.DarkGray
 import com.example.loopwell.ui.theme.Red
 
 @Composable
-fun CategoriesScreen() {
+fun CategoriesScreen(navController: NavController) {
     val categories = listOf(
         Category("Study", R.drawable.study_icon, "2 entries"),
         Category("Sports", R.drawable.sports_icon, "0 entries"),
@@ -69,21 +72,39 @@ fun CategoriesScreen() {
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            HeaderView()
+            HeaderView(navController)
             HorizontalDivider(thickness = 1.dp, color = DarkGray)
 
             Column (
-                Modifier.padding(vertical = 20.dp, horizontal = 20.dp),
+                Modifier.padding(20.dp),
             ) {
-                Text(
-                    text = "Default categories",
-                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
-                )
+                CategoryHeader(title = "Custom Categories", description = "5 available")
+                Spacer(modifier = Modifier.height(20.dp))
 
-                Text(
-                    text = "Editable for premium users",
-                    style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
-                )
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Refresh,
+                        contentDescription = "No category icon",
+                        modifier = Modifier.size(30.dp),
+                        tint = Color.Gray
+                    )
+                    Text(
+                        text = "There are no custom categories",
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            color = Color.Gray
+                        ), modifier = Modifier.padding(top = 10.dp, bottom = 30.dp)
+                    )
+                }
+
+            }
+            HorizontalDivider(thickness = 1.dp, color = DarkGray)
+            Column (
+                Modifier.padding(20.dp),
+            ) {
+                CategoryHeader(title = "Default categories", description = "Editable for premium users")
                 Spacer(modifier = Modifier.height(20.dp))
 
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
@@ -92,11 +113,15 @@ fun CategoriesScreen() {
                     }
                 }
             }
+            HorizontalDivider(thickness = 1.dp, color = DarkGray)
         }
         Button(
             onClick = {  },
             shape = RoundedCornerShape(10.dp),
-            modifier = Modifier.fillMaxWidth().align(Alignment.BottomCenter).padding(20.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(20.dp),
             contentPadding = PaddingValues(vertical = 18.dp),
             colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Red),
         ) {
@@ -109,7 +134,7 @@ fun CategoriesScreen() {
 }
 
 @Composable
-fun HeaderView () {
+fun HeaderView (navController: NavController) {
     Row (
         Modifier
             .fillMaxWidth()
@@ -122,7 +147,7 @@ fun HeaderView () {
             Icon(
                 imageVector = Icons.Outlined.KeyboardArrowLeft,
                 contentDescription = "Back arrow icon",
-                modifier = Modifier.size(30.dp),
+                modifier = Modifier.size(30.dp).clickable { navController.popBackStack() },
                 tint = Red
             )
 
@@ -179,4 +204,17 @@ fun CategoryItem(category: Category) {
             style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray, fontWeight = FontWeight.W500)
         )
     }
+}
+
+@Composable
+fun CategoryHeader(title: String, description: String) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
+    )
+
+    Text(
+        text = description,
+        style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
+    )
 }
