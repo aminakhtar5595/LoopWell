@@ -24,11 +24,20 @@ import androidx.compose.material.icons.outlined.KeyboardArrowLeft
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,7 +51,9 @@ import com.example.loopwell.ui.model.Category
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.DarkGray
 import com.example.loopwell.ui.theme.Red
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoriesScreen(navController: NavController) {
     val categories = listOf(
@@ -62,6 +73,10 @@ fun CategoriesScreen(navController: NavController) {
         Category("Outdoor", R.drawable.outdoor_icon, "0 entries"),
         Category("Other", R.drawable.other_icon, "0 entries")
     )
+
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val scope = rememberCoroutineScope()
+    var showSheet by remember { mutableStateOf(false) }
 
     Box (
         modifier = Modifier
@@ -116,7 +131,10 @@ fun CategoriesScreen(navController: NavController) {
             HorizontalDivider(thickness = 1.dp, color = DarkGray)
         }
         Button(
-            onClick = {  },
+            onClick = {
+                showSheet = true
+                scope.launch { sheetState.show() }
+            },
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier
                 .fillMaxWidth()
@@ -129,6 +147,11 @@ fun CategoriesScreen(navController: NavController) {
                 style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold, fontSize = 18.sp)
             )
         }
+
+        BottomSheetExample(showSheet = showSheet,
+            sheetState = sheetState,
+            onDismissRequest = { showSheet = false })
+
     }
 
 }
@@ -217,4 +240,41 @@ fun CategoryHeader(title: String, description: String) {
         text = description,
         style = MaterialTheme.typography.bodyMedium.copy(color = Color.Gray)
     )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BottomSheetExample(
+    showSheet: Boolean,
+    sheetState: SheetState,
+    onDismissRequest: () -> Unit
+) {
+    if (showSheet) {
+        ModalBottomSheet(
+            onDismissRequest = onDismissRequest,
+            sheetState = sheetState
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("Choose Option", style = MaterialTheme.typography.titleMedium)
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(onClick = onDismissRequest) {
+                    Text("Option 1")
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Button(onClick = onDismissRequest) {
+                    Text("Cancel")
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+            }
+        }
+    }
 }
