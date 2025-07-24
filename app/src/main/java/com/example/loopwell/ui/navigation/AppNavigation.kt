@@ -24,7 +24,7 @@ fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifie
         composable("home") { HomeScreen(navController) }
         composable("onboarding") { OnboardingFlow(navController) }
         composable("habits") { HabitsScreen() }
-        composable("tasks") { TasksScreen() }
+        composable("tasks") { TasksScreen(navController) }
         composable("category") { CategoriesScreen(navController) }
     }
 
