@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loopwell.R
 import com.example.loopwell.ui.components.FloatingButton
+import com.example.loopwell.ui.components.Header
 import com.example.loopwell.ui.model.HabitTask
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.DarkGray
@@ -72,47 +73,7 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row {
-                Image(painter = painterResource(id = R.drawable.menu_icon),
-                    contentDescription = "Menu icon",
-                    Modifier
-                        .padding(end = 20.dp)
-                        .size(25.dp))
-
-                Text(
-                    text = "Today",
-                    style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold)
-                )
-            }
-
-            Row {
-                Icon(
-                    imageVector = Icons.Outlined.Search,
-                    contentDescription = "Search Icon",
-                    modifier = Modifier.size(25.dp),
-                    tint = Color.Gray
-                )
-                Icon(
-                    imageVector = Icons.Outlined.DateRange,
-                    contentDescription = "Search Icon",
-                    modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .size(24.dp),
-                    tint = Color.Gray
-                )
-                Image(painter = painterResource(id = R.drawable.info_icon),
-                    contentDescription = "Info",
-                    Modifier.size(24.dp))
-            }
-
-        }
+        Header()
 
         HorizontalCalendar(
             days = days,
