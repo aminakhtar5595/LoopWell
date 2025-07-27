@@ -1,6 +1,7 @@
 package com.example.loopwell.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -36,6 +37,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.loopwell.ui.theme.BackgroundColor
 import com.example.loopwell.ui.theme.BorderGray
 import com.example.loopwell.ui.theme.Red
@@ -43,7 +45,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FloatingButton(onClick: () -> Unit) {
+fun FloatingButton(navController: NavController) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val scope = rememberCoroutineScope()
     var showSheet by remember { mutableStateOf(false) }
@@ -60,9 +62,12 @@ fun FloatingButton(onClick: () -> Unit) {
         Icon(Icons.Filled.Add, "Add habit", modifier = Modifier.size(25.dp))
     }
 
-    BottomSheetExample(showSheet = showSheet,
+    BottomSheetExample(
+        showSheet = showSheet,
         sheetState = sheetState,
-        onDismissRequest = { showSheet = false })
+        onDismissRequest = { showSheet = false },
+        navController = navController
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,7 +75,8 @@ fun FloatingButton(onClick: () -> Unit) {
 fun BottomSheetExample(
     showSheet: Boolean,
     sheetState: SheetState,
-    onDismissRequest: () -> Unit
+    onDismissRequest: () -> Unit,
+    navController: NavController
 ) {
     if (showSheet) {
         ModalBottomSheet(
@@ -86,17 +92,17 @@ fun BottomSheetExample(
                     .fillMaxWidth()
                     .background(BackgroundColor)
             ) {
-                ModalInfo(icon = Icons.Outlined.Edit, title = "Habit", description = "Activity that repeats over time. It has detailed tracking and statistics.")
-                ModalInfo(icon = Icons.Outlined.DateRange, title = "Recurring task", description = "Activity that repeats over time without tracking or statistics.")
-                ModalInfo(icon = Icons.Outlined.Settings, title = "Task", description = "Single instance activity without tracking over time.")
+                ModalInfo(icon = Icons.Outlined.Edit, title = "Habit", description = "Activity that repeats over time. It has detailed tracking and statistics.", navigate = { navController.navigate("habits") })
+                ModalInfo(icon = Icons.Outlined.DateRange, title = "Recurring task", description = "Activity that repeats over time without tracking or statistics.", navigate = { navController.navigate("habits") })
+                ModalInfo(icon = Icons.Outlined.Settings, title = "Task", description = "Single instance activity without tracking over time.", navigate = { navController.navigate("tasks") })
             }
         }
     }
 }
 
 @Composable
-fun ModalInfo(icon: ImageVector, title: String, description: String) {
-    Column(modifier = Modifier.fillMaxWidth()) {
+fun ModalInfo(icon: ImageVector, title: String, description: String, navigate: () -> Unit) {
+    Column(modifier = Modifier.fillMaxWidth().clickable { navigate() }) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier

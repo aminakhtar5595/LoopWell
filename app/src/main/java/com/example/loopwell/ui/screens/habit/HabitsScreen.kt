@@ -67,7 +67,7 @@ fun HabitsScreen(navController: NavController) {
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 15.dp)
         ) {
-            Header()
+            Header(title = "Habits")
             HabitItem()
             Spacer(modifier = Modifier.height(15.dp))
             HabitItem()
@@ -78,9 +78,7 @@ fun HabitsScreen(navController: NavController) {
                 .align(Alignment.BottomEnd)
                 .padding(20.dp)
         ) {
-            FloatingButton(onClick = {
-                navController.navigate("expense")
-            })
+            FloatingButton(navController)
         }
     }
     HabitBottomSheet(showSheet = showSheet,

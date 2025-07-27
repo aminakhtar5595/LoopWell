@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.ui.graphics.Color
 import com.example.loopwell.ui.screens.MainScreen
+import com.example.loopwell.ui.theme.BackgroundColor
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -16,9 +16,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val systemUiController = rememberSystemUiController()
 
-            // Set global status bar color here
             systemUiController.setSystemBarsColor(
-                color = Color(0xFF121212),
+                color = BackgroundColor,
                 darkIcons = false
             )
             MainScreen()
