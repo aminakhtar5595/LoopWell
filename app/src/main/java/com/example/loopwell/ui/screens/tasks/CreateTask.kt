@@ -15,9 +15,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DateRange
+import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -63,7 +66,7 @@ fun CreateTask(navController: NavController) {
                     )
                     .padding(vertical = 8.dp, horizontal = 15.dp)
             )
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(30.dp))
             OutlinedTextField(
                 value = taskName,
                 onValueChange = { taskName = it },
@@ -80,7 +83,7 @@ fun CreateTask(navController: NavController) {
                 ),
                 shape = RoundedCornerShape(10.dp),
             )
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(30.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -102,7 +105,7 @@ fun CreateTask(navController: NavController) {
                         contentDescription = "Category",Modifier.size(42.dp))
                 }
             }
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(30.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -117,10 +120,11 @@ fun CreateTask(navController: NavController) {
                         .background(
                             color = Red.copy(alpha = 0.1f),
                             shape = RoundedCornerShape(5.dp)
-                        ).padding(vertical = 10.dp, horizontal = 30.dp)
+                        )
+                        .padding(vertical = 10.dp, horizontal = 30.dp)
                 )
             }
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(30.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -135,10 +139,11 @@ fun CreateTask(navController: NavController) {
                         .background(
                             color = Red.copy(alpha = 0.1f),
                             shape = RoundedCornerShape(30.dp)
-                        ).padding(horizontal = 10.dp, vertical = 5.dp)
+                        )
+                        .padding(horizontal = 10.dp, vertical = 5.dp)
                 )
             }
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(30.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -153,7 +158,32 @@ fun CreateTask(navController: NavController) {
                         .background(
                             color = Red.copy(alpha = 0.1f),
                             shape = RoundedCornerShape(5.dp)
-                        ).padding(vertical = 10.dp, horizontal = 30.dp)
+                        )
+                        .padding(vertical = 10.dp, horizontal = 30.dp)
+                )
+            }
+            Spacer(modifier = Modifier.size(30.dp))
+            TaskInfo(icon = Icons.Outlined.Email, title = "Note")
+        }
+
+        Row(
+            modifier = Modifier.align(Alignment.BottomCenter)
+        ) {
+            Button(
+                onClick = { },
+                colors = ButtonDefaults.buttonColors(contentColor = Color.White, containerColor = Color.Transparent),
+            ) {
+                Text("CANCEL",
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+                )
+            }
+            Spacer(modifier = Modifier.width(100.dp))
+            Button(
+                onClick = { },
+                colors = ButtonDefaults.buttonColors(contentColor = Red, containerColor = Color.Transparent),
+            ) {
+                Text("CONFIRM",
+                    style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
                 )
             }
         }
