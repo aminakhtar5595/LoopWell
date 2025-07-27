@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.loopwell.R
 
 @Composable
-fun Header() {
+fun Header(title: String) {
     Row (
         modifier = Modifier
             .fillMaxWidth()
@@ -38,7 +38,7 @@ fun Header() {
                     .size(25.dp))
 
             Text(
-                text = "Today",
+                text = title,
                 style = MaterialTheme.typography.headlineSmall.copy(color = Color.White, fontWeight = FontWeight.Bold)
             )
         }

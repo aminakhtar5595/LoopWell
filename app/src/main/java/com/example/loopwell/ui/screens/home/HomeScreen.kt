@@ -71,7 +71,7 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 15.dp),
     ) {
-        Header()
+        Header(title = "Today")
 
         HorizontalCalendar(
             days = days,
@@ -84,7 +84,6 @@ fun HomeScreen(navController: NavController) {
                 HabitTaskItem(task = task)
             }
         }
-
 
         if (noData) {
             Column(
@@ -101,9 +100,7 @@ fun HomeScreen(navController: NavController) {
                 .align(Alignment.BottomEnd)
                 .padding(20.dp)
         ) {
-            FloatingButton(onClick = {
-                navController.navigate("expense")
-            })
+            FloatingButton(navController)
         }
     }
 }
