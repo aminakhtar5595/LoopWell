@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.loopwell.ui.screens.categories.CategoriesScreen
+import com.example.loopwell.ui.screens.habit.CreateHabitFlow
 import com.example.loopwell.ui.screens.habit.HabitsScreen
 import com.example.loopwell.ui.screens.splash.SplashScreen
 import com.example.loopwell.ui.screens.home.HomeScreen
@@ -20,19 +21,22 @@ import kotlinx.coroutines.delay
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = "create_task", modifier = modifier) {
+    NavHost(navController = navController, startDestination = "habit_flow", modifier = modifier) {
         composable("splash") { SplashScreen() }
         composable("home") { HomeScreen(navController) }
         composable("onboarding") { OnboardingFlow(navController) }
-        composable("habits") { HabitsScreen() }
         composable("category") { CategoriesScreen(navController) }
+
+        composable("habits") { HabitsScreen() }
+        composable("habit_flow") { CreateHabitFlow(navController) }
+
         composable("tasks") { TasksScreen(navController) }
         composable("create_task") { CreateTask(navController) }
     }
 
     LaunchedEffect(Unit) {
         delay(2000)
-        navController.navigate("create_task") {
+        navController.navigate("habit_flow") {
             popUpTo("splash") { inclusive = true }
         }
     }

@@ -29,7 +29,7 @@ fun BottomNavBar(navController: NavController) {
     val currentRoute = navBackStackEntry?.destination?.route
 
 //    if (items.any { it.route == currentRoute }) {
-        if (currentRoute != "category" && currentRoute != "create_task") {
+        if (currentRoute != "category" && currentRoute != "create_task" && currentRoute != "habit_flow") {
         NavigationBar(
             containerColor = DarkGray
         ) {
