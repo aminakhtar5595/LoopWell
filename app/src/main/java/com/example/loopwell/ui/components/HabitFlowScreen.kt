@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,13 +12,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +31,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.loopwell.R
-import com.example.loopwell.ui.model.Category
+import com.example.loopwell.ui.theme.BackgroundColor
+import com.example.loopwell.ui.theme.Red
 
 @Composable
 fun HabitFlowScreen(
@@ -58,6 +63,7 @@ fun HabitFlowScreen(
         "Outdoor" to R.drawable.outdoor_icon,
         "Other" to R.drawable.other_icon,
     )
+    var habitName by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -67,14 +73,16 @@ fun HabitFlowScreen(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+//        Habits list
         Column(
-            modifier = Modifier.padding(top = 30.dp)
+            modifier = Modifier.padding(top = 30.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = title,
                 style = MaterialTheme.typography.headlineSmall.copy(
                     color = Color(0xFFa21752),
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             )
             Spacer(modifier = Modifier.height(30.dp))
@@ -95,6 +103,63 @@ fun HabitFlowScreen(
             }
         }
 
+//      Create habit
+//        Column(
+//            modifier = Modifier.padding(top = 30.dp),
+//            horizontalAlignment = Alignment.CenterHorizontally
+//        ) {
+//            Text(
+//                text = title,
+//                style = MaterialTheme.typography.headlineSmall.copy(
+//                    color = Color(0xFFa21752),
+//                    fontWeight = FontWeight.Bold,
+//                )
+//            )
+//            Spacer(modifier = Modifier.height(30.dp))
+//            OutlinedTextField(
+//                value = habitName,
+//                onValueChange = { habitName = it },
+//                label = { Text("Habit") },
+//                modifier = Modifier.fillMaxWidth(),
+//                colors = TextFieldDefaults.colors(
+//                    unfocusedContainerColor = BackgroundColor,
+//                    unfocusedLabelColor = Red,
+//                    unfocusedIndicatorColor = Red,
+//                    focusedTextColor = Color.White,
+//                    focusedContainerColor = BackgroundColor,
+//                    focusedIndicatorColor = Red,
+//                    focusedLabelColor = Red
+//                ),
+//                shape = RoundedCornerShape(10.dp),
+//            )
+//            Spacer(modifier = Modifier.size(20.dp))
+//            Text(
+//                text = "e.g.. Study for the exam.",
+//                style = MaterialTheme.typography.titleMedium.copy(
+//                    color = Color.Gray
+//                )
+//            )
+//            Spacer(modifier = Modifier.size(20.dp))
+//            OutlinedTextField(
+//                value = habitName,
+//                onValueChange = { habitName = it },
+//                label = { Text("Description (optional)") },
+//                modifier = Modifier.fillMaxWidth(),
+//                colors = TextFieldDefaults.colors(
+//                    unfocusedContainerColor = BackgroundColor,
+//                    unfocusedLabelColor = Red,
+//                    unfocusedIndicatorColor = Red,
+//                    focusedTextColor = Color.White,
+//                    focusedContainerColor = BackgroundColor,
+//                    focusedIndicatorColor = Red,
+//                    focusedLabelColor = Red
+//                ),
+//                shape = RoundedCornerShape(10.dp),
+//            )
+//        }
+
+
+        // Back and Next section
         Row(
             modifier = Modifier
                 .fillMaxWidth()

@@ -15,15 +15,11 @@ fun CreateHabitFlow(navController: NavController) {
 
     val onboardingItems = listOf(
         Triple(R.drawable.onboarding_icon_one, "Select a category for your habit", "This app will help you to keep an organized routine as you build new habits!"),
-        Triple(R.drawable.onboarding_icon_two, "Build a Better Routine", "To begin using LoopWell, start by recording the habits you want to track in your life along with your pending tasks."),
-//        Triple(R.drawable.onboarding_icon_three, "Make Each Day Count", "Each day, you will receive a list of all your scheduled activities. Make sure of our customizable reminders to ensure you complete them all!"),
-//        Triple(R.drawable.onboarding_icon_four, "Stay Motivated", "Create streaks of success for your habits and complete all your tasks. Use the charts and tools to deeply analyze your progress."),
-//        Triple(R.drawable.onboarding_icon_five, "Customize Your Journey", "Try all the customization options, create a daily journal and protect your data. There are many features to discover!"),
+        Triple(R.drawable.onboarding_icon_two, "Define your habit", "To begin using LoopWell, start by recording the habits you want to track in your life along with your pending tasks."),
     )
 
     val isLastPage = currentPage == onboardingItems.lastIndex
     val isFirstPage = currentPage == 0
-//    val item = onboardingItems[currentPage]
 
     val (image, title, desc) = onboardingItems[currentPage]
 
