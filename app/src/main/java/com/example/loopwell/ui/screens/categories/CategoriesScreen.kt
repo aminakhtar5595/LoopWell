@@ -303,7 +303,6 @@ fun BottomSheetExample(
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
                     onClick = { },
-                    shape = RoundedCornerShape(10.dp),
                     modifier = Modifier
                         .fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(contentColor = Red, containerColor = Color.Transparent),
