@@ -13,24 +13,26 @@ import com.example.loopwell.ui.screens.habit.HabitsScreen
 import com.example.loopwell.ui.screens.splash.SplashScreen
 import com.example.loopwell.ui.screens.home.HomeScreen
 import com.example.loopwell.ui.screens.onboarding.OnboardingFlow
+import com.example.loopwell.ui.screens.tasks.CreateTask
 import com.example.loopwell.ui.screens.tasks.TasksScreen
 import kotlinx.coroutines.delay
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = "home", modifier = modifier) {
+    NavHost(navController = navController, startDestination = "create_task", modifier = modifier) {
         composable("splash") { SplashScreen() }
         composable("home") { HomeScreen(navController) }
         composable("onboarding") { OnboardingFlow(navController) }
         composable("habits") { HabitsScreen() }
-        composable("tasks") { TasksScreen(navController) }
         composable("category") { CategoriesScreen(navController) }
+        composable("tasks") { TasksScreen(navController) }
+        composable("create_task") { CreateTask(navController) }
     }
 
     LaunchedEffect(Unit) {
         delay(2000)
-        navController.navigate("home") {
+        navController.navigate("create_task") {
             popUpTo("splash") { inclusive = true }
         }
     }

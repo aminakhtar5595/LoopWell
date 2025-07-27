@@ -37,7 +37,6 @@ fun TasksScreen(navController: NavController) {
             .fillMaxSize()
             .background(color = BackgroundColor)
     ) {
-
         Column (
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 15.dp),
