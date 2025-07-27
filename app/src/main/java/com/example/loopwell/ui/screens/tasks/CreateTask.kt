@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -98,8 +99,26 @@ fun CreateTask(navController: NavController) {
                     Image(painter = painterResource(id = R.drawable.task_icon),
                         contentDescription = "Category",Modifier.size(42.dp))
                 }
-
             }
+            Spacer(modifier = Modifier.size(20.dp))
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                TaskInfo(icon = Icons.Outlined.DateRange, title = "Date")
+                Text(
+                    text = "Today",
+                    style = MaterialTheme.typography.titleMedium.copy(color = Red),
+                    modifier = Modifier
+                        .background(
+                            color = Red.copy(alpha = 0.1f),
+                            shape = RoundedCornerShape(5.dp)
+                        ).padding(vertical = 10.dp, horizontal = 30.dp)
+                )
+            }
+            Spacer(modifier = Modifier.size(20.dp))
         }
     }
 }
