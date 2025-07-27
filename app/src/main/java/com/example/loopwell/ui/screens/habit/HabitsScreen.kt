@@ -15,9 +15,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
+import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.Place
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -65,6 +68,9 @@ fun HabitsScreen(navController: NavController) {
                 .padding(horizontal = 10.dp, vertical = 15.dp)
         ) {
             Header()
+            HabitItem()
+            Spacer(modifier = Modifier.height(15.dp))
+            HabitItem()
         }
 
         Box(
@@ -175,4 +181,108 @@ fun ModalInfo(icon: ImageVector, title: String) {
         )
     }
     HorizontalDivider(thickness = 1.dp, color = BorderGray)
+}
+
+@Composable
+fun HabitItem() {
+    Column(
+        modifier = Modifier
+            .background(
+                color = Color.DarkGray.copy(alpha = 0.1f),
+                shape = RoundedCornerShape(20.dp)
+            )
+            .padding(vertical = 15.dp)
+    ) {
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 10.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column (
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "Learn Kotlin",
+                    style = MaterialTheme.typography.titleLarge.copy(color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.W500)
+                )
+                Text(
+                    text = "Every 2 days (Flexible)",
+                    style = MaterialTheme.typography.bodyMedium.copy(color = Red),
+                    modifier = Modifier
+                        .background(
+                            color = Red.copy(alpha = 0.1f),
+                            shape = RoundedCornerShape(5.dp)
+                        )
+                        .padding(horizontal = 5.dp)
+                )
+            }
+            Image(
+                painter = painterResource(id = R.drawable.bad_habit_icon),
+                contentDescription = "Category Icon",
+                Modifier.size(40.dp)
+            )
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        HorizontalDivider(thickness = 1.dp, color = Color.Gray.copy(alpha = 0.3f))
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 10.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Share,
+                    contentDescription = "Icon content",
+                    modifier = Modifier.size(18.dp),
+                    tint = Red
+                )
+                Text(
+                    text = "0",
+                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.White),
+                    modifier = Modifier.padding(start = 5.dp, end = 10.dp)
+                )
+                Icon(
+                    imageVector = Icons.Outlined.CheckCircle,
+                    contentDescription = "Icon content",
+                    modifier = Modifier.size(20.dp),
+                    tint = Red
+                )
+                Text(
+                    text = "0%",
+                    style = MaterialTheme.typography.bodyLarge.copy(color = Color.White),
+                    modifier = Modifier.padding(start = 5.dp, end = 10.dp)
+                )
+            }
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(15.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.DateRange,
+                    contentDescription = "Icon content",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.Gray
+                )
+                Icon(
+                    imageVector = Icons.Outlined.Place,
+                    contentDescription = "Icon content",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.Gray
+                )
+                Icon(
+                    imageVector = Icons.Outlined.MoreVert,
+                    contentDescription = "Icon content",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.Gray
+                )
+            }
+        }
+    }
 }
