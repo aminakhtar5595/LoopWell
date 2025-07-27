@@ -42,6 +42,10 @@ fun CreateTask(navController: NavController) {
             Text(
                 text = "New Task",
                 style = MaterialTheme.typography.titleLarge.copy(color = Color.White),
+                modifier = Modifier.background(
+                    color = Color.Gray.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(5.dp)
+                ).padding(vertical = 8.dp, horizontal = 15.dp)
             )
             Spacer(modifier = Modifier.size(20.dp))
             OutlinedTextField(
