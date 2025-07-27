@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -119,6 +120,23 @@ fun CreateTask(navController: NavController) {
                 )
             }
             Spacer(modifier = Modifier.size(20.dp))
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                TaskInfo(icon = Icons.Outlined.Notifications, title = "Time and Reminders")
+                Text(
+                    text = "0",
+                    style = MaterialTheme.typography.titleMedium.copy(color = Red),
+                    modifier = Modifier
+                        .background(
+                            color = Red.copy(alpha = 0.1f),
+                            shape = RoundedCornerShape(30.dp)
+                        ).padding(horizontal = 10.dp, vertical = 5.dp)
+                )
+            }
         }
     }
 }
