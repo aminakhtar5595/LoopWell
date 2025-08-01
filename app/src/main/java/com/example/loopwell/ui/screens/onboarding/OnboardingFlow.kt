@@ -22,7 +22,6 @@ fun OnboardingFlow(navController: NavController) {
 
     val isLastPage = currentPage == onboardingItems.lastIndex
     val isFirstPage = currentPage == 0
-//    val item = onboardingItems[currentPage]
 
     val (image, title, desc) = onboardingItems[currentPage]
 
