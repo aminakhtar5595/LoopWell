@@ -2,6 +2,7 @@ package com.example.loopwell.ui.screens.habit
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -68,9 +69,9 @@ fun HabitsScreen(navController: NavController) {
                 .padding(horizontal = 10.dp, vertical = 15.dp)
         ) {
             Header(title = "Habits")
-            HabitItem()
+            HabitItem(showModal = { showSheet = true })
             Spacer(modifier = Modifier.height(15.dp))
-            HabitItem()
+            HabitItem(showModal = { showSheet = true })
         }
 
         Box(
@@ -182,7 +183,7 @@ fun ModalInfo(icon: ImageVector, title: String) {
 }
 
 @Composable
-fun HabitItem() {
+fun HabitItem(showModal: () -> Unit) {
     Column(
         modifier = Modifier
             .background(
@@ -190,6 +191,7 @@ fun HabitItem() {
                 shape = RoundedCornerShape(20.dp)
             )
             .padding(vertical = 15.dp)
+            .clickable { showModal() }
     ) {
         Row (
             modifier = Modifier
