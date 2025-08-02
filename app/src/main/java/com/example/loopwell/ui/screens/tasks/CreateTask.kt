@@ -170,7 +170,7 @@ fun CreateTask(navController: NavController) {
             modifier = Modifier.align(Alignment.BottomCenter)
         ) {
             Button(
-                onClick = { },
+                onClick = { navController.popBackStack() },
                 colors = ButtonDefaults.buttonColors(contentColor = Color.White, containerColor = Color.Transparent),
             ) {
                 Text("CANCEL",
@@ -179,7 +179,7 @@ fun CreateTask(navController: NavController) {
             }
             Spacer(modifier = Modifier.width(100.dp))
             Button(
-                onClick = { },
+                onClick = { navController.popBackStack() },
                 colors = ButtonDefaults.buttonColors(contentColor = Red, containerColor = Color.Transparent),
             ) {
                 Text("CONFIRM",
