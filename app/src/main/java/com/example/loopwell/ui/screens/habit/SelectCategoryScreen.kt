@@ -30,6 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.loopwell.R
 import com.example.loopwell.ui.components.PageIndicator
+import com.example.loopwell.ui.components.SkipNextButton
 
 @Composable
 fun SelectCategoryScreen(
@@ -98,26 +99,14 @@ fun SelectCategoryScreen(
         }
 
         // Back and Next section
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 40.dp, vertical = 20.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = leftLabel,
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-                modifier = Modifier.clickable { onSkipClick() }
-            )
-            PageIndicator(currentPage = currentPage, totalPages = totalPages)
-
-            Text(
-                text = rightLabel,
-                style = MaterialTheme.typography.bodyMedium.copy(color = Color.White),
-                modifier = Modifier.clickable { onNextClick() }
-            )
-        }
+        SkipNextButton(
+            leftLabel = leftLabel,
+            rightLabel = rightLabel,
+            currentPage = currentPage,
+            totalPages = totalPages,
+            onSkipClick = { onSkipClick() },
+            onNextClick = { onNextClick() }
+        )
     }
 }
 

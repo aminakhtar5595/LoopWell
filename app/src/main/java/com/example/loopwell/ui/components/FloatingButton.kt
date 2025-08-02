@@ -93,7 +93,7 @@ fun CreateTaskHabitModal(
                     .background(BackgroundColor)
             ) {
                 ModalInfo(icon = Icons.Outlined.Edit, title = "Habit", description = "Activity that repeats over time. It has detailed tracking and statistics.", navigate = { navController.navigate("habit_flow") })
-                ModalInfo(icon = Icons.Outlined.DateRange, title = "Recurring task", description = "Activity that repeats over time without tracking or statistics.", navigate = { navController.navigate("habits") })
+                ModalInfo(icon = Icons.Outlined.DateRange, title = "Recurring task", description = "Activity that repeats over time without tracking or statistics.", navigate = { navController.navigate("habit_flow") })
                 ModalInfo(icon = Icons.Outlined.Settings, title = "Task", description = "Single instance activity without tracking over time.", navigate = { navController.navigate("create_task") })
             }
         }
