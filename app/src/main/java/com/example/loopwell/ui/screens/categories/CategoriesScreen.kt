@@ -299,7 +299,7 @@ fun BottomSheetExample(
                 ModalInfo(icon = Icons.Outlined.Settings, title = "Category color")
                 Spacer(modifier = Modifier.height(10.dp))
                 Button(
-                    onClick = { },
+                    onClick = { onDismissRequest() },
                     modifier = Modifier
                         .fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(contentColor = Red, containerColor = Color.Transparent),

@@ -32,10 +32,8 @@ import com.example.loopwell.R
 import com.example.loopwell.ui.components.PageIndicator
 
 @Composable
-fun HabitFlowScreen(
-    imageRes: Int,
+fun SelectCategoryScreen(
     title: String,
-    description: String,
     currentPage: Int,
     totalPages: Int,
     onNextClick: () -> Unit,
@@ -70,7 +68,6 @@ fun HabitFlowScreen(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        Habits list
         Column(
             modifier = Modifier.padding(top = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -99,62 +96,6 @@ fun HabitFlowScreen(
                 }
             }
         }
-
-//      Create habit
-//        Column(
-//            modifier = Modifier.padding(top = 30.dp),
-//            horizontalAlignment = Alignment.CenterHorizontally
-//        ) {
-//            Text(
-//                text = title,
-//                style = MaterialTheme.typography.headlineSmall.copy(
-//                    color = Color(0xFFa21752),
-//                    fontWeight = FontWeight.Bold,
-//                )
-//            )
-//            Spacer(modifier = Modifier.height(30.dp))
-//            OutlinedTextField(
-//                value = habitName,
-//                onValueChange = { habitName = it },
-//                label = { Text("Habit") },
-//                modifier = Modifier.fillMaxWidth(),
-//                colors = TextFieldDefaults.colors(
-//                    unfocusedContainerColor = BackgroundColor,
-//                    unfocusedLabelColor = Red,
-//                    unfocusedIndicatorColor = Red,
-//                    focusedTextColor = Color.White,
-//                    focusedContainerColor = BackgroundColor,
-//                    focusedIndicatorColor = Red,
-//                    focusedLabelColor = Red
-//                ),
-//                shape = RoundedCornerShape(10.dp),
-//            )
-//            Spacer(modifier = Modifier.size(20.dp))
-//            Text(
-//                text = "e.g.. Study for the exam.",
-//                style = MaterialTheme.typography.titleMedium.copy(
-//                    color = Color.Gray
-//                )
-//            )
-//            Spacer(modifier = Modifier.size(20.dp))
-//            OutlinedTextField(
-//                value = habitName,
-//                onValueChange = { habitName = it },
-//                label = { Text("Description (optional)") },
-//                modifier = Modifier.fillMaxWidth(),
-//                colors = TextFieldDefaults.colors(
-//                    unfocusedContainerColor = BackgroundColor,
-//                    unfocusedLabelColor = Red,
-//                    unfocusedIndicatorColor = Red,
-//                    focusedTextColor = Color.White,
-//                    focusedContainerColor = BackgroundColor,
-//                    focusedIndicatorColor = Red,
-//                    focusedLabelColor = Red
-//                ),
-//                shape = RoundedCornerShape(10.dp),
-//            )
-//        }
-
 
         // Back and Next section
         Row(
@@ -196,7 +137,7 @@ fun CategoryInfo(title: String, icon: Int, modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.titleMedium.copy(
                 color = Color.White
             ),
-            modifier = Modifier.weight(1f) // Ensures text takes up remaining space
+            modifier = Modifier.weight(1f)
         )
         Image(
             painter = painterResource(id = icon),
