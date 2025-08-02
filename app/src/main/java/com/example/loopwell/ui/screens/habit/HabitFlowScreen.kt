@@ -1,4 +1,4 @@
-package com.example.loopwell.ui.components
+package com.example.loopwell.ui.screens.habit
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,9 +16,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,8 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.loopwell.R
-import com.example.loopwell.ui.theme.BackgroundColor
-import com.example.loopwell.ui.theme.Red
+import com.example.loopwell.ui.components.PageIndicator
 
 @Composable
 fun HabitFlowScreen(
