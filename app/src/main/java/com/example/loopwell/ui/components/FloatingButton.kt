@@ -62,7 +62,7 @@ fun FloatingButton(navController: NavController) {
         Icon(Icons.Filled.Add, "Add habit", modifier = Modifier.size(25.dp))
     }
 
-    BottomSheetExample(
+    CreateTaskHabitModal(
         showSheet = showSheet,
         sheetState = sheetState,
         onDismissRequest = { showSheet = false },
@@ -72,7 +72,7 @@ fun FloatingButton(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomSheetExample(
+fun CreateTaskHabitModal(
     showSheet: Boolean,
     sheetState: SheetState,
     onDismissRequest: () -> Unit,
@@ -92,7 +92,7 @@ fun BottomSheetExample(
                     .fillMaxWidth()
                     .background(BackgroundColor)
             ) {
-                ModalInfo(icon = Icons.Outlined.Edit, title = "Habit", description = "Activity that repeats over time. It has detailed tracking and statistics.", navigate = { navController.navigate("habits") })
+                ModalInfo(icon = Icons.Outlined.Edit, title = "Habit", description = "Activity that repeats over time. It has detailed tracking and statistics.", navigate = { navController.navigate("habit_flow") })
                 ModalInfo(icon = Icons.Outlined.DateRange, title = "Recurring task", description = "Activity that repeats over time without tracking or statistics.", navigate = { navController.navigate("habits") })
                 ModalInfo(icon = Icons.Outlined.Settings, title = "Task", description = "Single instance activity without tracking over time.", navigate = { navController.navigate("create_task") })
             }

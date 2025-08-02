@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.loopwell.ui.screens.categories.CategoriesScreen
-import com.example.loopwell.ui.screens.habit.CreateHabitFlow
+import com.example.loopwell.ui.screens.habit.HabitFlow
 import com.example.loopwell.ui.screens.habit.HabitsScreen
 import com.example.loopwell.ui.screens.splash.SplashScreen
 import com.example.loopwell.ui.screens.home.HomeScreen
@@ -28,7 +28,7 @@ fun AppNavigation(navController: NavHostController, modifier: Modifier = Modifie
         composable("category") { CategoriesScreen(navController) }
 
         composable("habits") { HabitsScreen(navController) }
-        composable("habit_flow") { CreateHabitFlow(navController) }
+        composable("habit_flow") { HabitFlow(navController) }
 
         composable("tasks") { TasksScreen(navController) }
         composable("create_task") { CreateTask(navController) }
