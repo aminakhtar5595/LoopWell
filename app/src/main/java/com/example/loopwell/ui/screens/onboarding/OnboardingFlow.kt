@@ -6,7 +6,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.loopwell.R
-import com.example.loopwell.ui.components.OnboardingScreen
 
 @Composable
 fun OnboardingFlow(navController: NavController) {
